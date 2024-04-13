@@ -1,0 +1,107 @@
+<div class="container">
+    <div class="div-1">
+        <div class="page-header">
+            <span> {{title}}</span>
+        </div>
+        <br>
+        <form #orderForm="ngForm" (ngSubmit)="onSubmitOrder()">
+            <div class="row g-3">
+                <label for="name" class="col-sm-2 form-label">Customer Name <span class="required-field">*</span></label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" value="Name" [(ngModel)]="order.customer_name" id="name" name="name" required #name="ngModel">
+                    <div [hidden]="name.valid || name.pristine">
+                        <span class="form-error-message">Customer Name is required</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="div-border">
+                <div class="row" style="margin-bottom: 10px;">
+                    <label class="col-sm-2">Add Products</label>
+                    <div class="col-sm-10"> <button name="add" id="add" pButton type="button" label="Add" (click)="onRowAdd()"></button></div>
+                </div>
+                <div class="row" style="margin:5px 20px 60px 20px;">
+                    <div class="card">
+                        <p-table #dt [columns]="cols" [value]="order.products" [tableStyle]="{ 'min-width': '50rem' }">
+                            <ng-template pTemplate="caption">
+                                <div class="flex">
+                                    <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                                    <span class="p-input-icon-left ml-auto">
+                                        <i class="pi pi-search"></i>
+                                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                                    </span>
+                                </div>
+                            </ng-template>
+            
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    <th *ngFor="let col of columns">
+                                        {{ col.header }}
+                                    </th>
+                                    <th>Delete</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                                <tr>
+                                    <td *ngFor="let col of columns">
+                                        {{ rowData[col.field] }}
+                                    </td>
+                                    <td>
+                                        <p-button label="Delete" icon="pi pi-trash" (onClick)="deleteOrder(rowData.order_id)"></p-button>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+
+                <div class="col-sm-12" style="margin-left: 5px;">
+                    <button type="submit" class="btn-space" pButton [disabled]="!orderForm.form.valid" label="Add Order"></button>
+                    <button type="button" class="btn-space" pButton label="Cancel" [routerLink]="['/orders']"></button>
+                </div>
+
+            </div>
+
+        </form>
+       
+        <p-dialog header="Add Relevant Study" [(visible)]="display" [style]="{width: '50vw'}">
+            <div>
+                <form class="form-horizontal" #productRowForm="ngForm" (ngSubmit)="onSubmitAddProduct();productRowForm.reset()">
+                    <div class="form-group row">
+                        <label for="product" class="col-sm-2 control-label">Product<span class="required-field">*</span></label>
+                        <div class="col-sm-10">
+                            <p-dropdown appendTo="body" [options]="products" [(ngModel)]="selectedProduct" optionLabel="name" [showClear]="true" placeholder="Select a Product" id="product" name="product" required #product="ngModel"></p-dropdown>   
+                            <div [hidden]="product.valid || product.pristine">
+                                <span class="form-error-message">Product is required</span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="form-group row">
+                        <label for="quantity" class="col-sm-2 control-label">Quantity<span class="required-field">*</span></label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" value="quantity" [(ngModel)]="newProduct.quantity" id="quantity" name="quantity" required #quantity="ngModel">
+                            <div [hidden]="quantity.valid || quantity.pristine">
+                                <span class="form-error-message">Quantity is required</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn-space" pButton [disabled]="!productRowForm.form.valid" label="Add"></button>
+                            <button type="button" class="btn-space" pButton label="Cancel" (click)="onCancel()"></button>
+                        </div>
+
+
+
+                    </div>
+                </form>
+
+            </div>
+        </p-dialog>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="container">
+
+
+    <!--<div class="row" *ngIf="showTable" style="margin:40px 20px 5px 20px;">
+        <div class="col-sm-12">
+            <p-button label="Add new product" (onClick)="addOrder()"></p-button>
+        </div>
+    </div>-->
+
+    <div class="row" *ngIf="showTable" style="margin:40px 20px 5px 20px;">
+        <div class="col-md-12 col-sm-12">
+            <div class="announcements-header">
+                Orders
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+
+        <div class="col-sm-12" style="margin-left: 5px;">
+            <button type="button" class="btn-space" pButton label="Add New Order" [routerLink]="['/addorder']" style="padding-left: 15px"></button>
+        </div>
+
+    </div>
+    <div class="row" *ngIf="showTable" style="margin:5px 20px 60px 20px;">
+        <div class="card">
+            <p-table #dt [columns]="cols" [value]="orders" [tableStyle]="{ 'min-width': '50rem' }" [sortField]="sortField" [sortOrder]="sortOrder">
+                <ng-template pTemplate="caption">
+                    <div class="flex">
+                        <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                        <span class="p-input-icon-left ml-auto">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                        </span>
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                            {{ col.header }}
+                            <!--do a switchCase to add $ for cost-->
+                            <p-sortIcon [field]="col.field"></p-sortIcon>
+                        </th>
+                        <th>See Details</th>
+                        <th>Delete</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr>
+                        <td *ngFor="let col of columns" [ngSwitch]="col.field">
+                            <span *ngSwitchCase="'order_id'"><a routerLink="/orderdetails/{{rowData[col.field]}}" target="_blank">{{ rowData[col.field] }}</a></span>
+                            <span *ngSwitchCase="'total'">{{ rowData[col.field] | currency:'USD'}}</span>
+                            <span *ngSwitchDefault >{{ rowData[col.field] }} </span>
+                        </td>
+                        <td>
+                            <a class="p-button" target="_blank" [routerLink]="['/orderdetails', rowData.order_id]" style="color: #efefef">Details<i class="fa fa-external-link" style="padding-left: 10px"></i></a>
+                        </td>
+                        <td>
+                            <p-button label="" icon="pi pi-trash" (onClick)="deleteOrder(rowData.order_id)"></p-button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
+
+

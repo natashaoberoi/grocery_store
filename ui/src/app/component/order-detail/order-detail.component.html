@@ -1,0 +1,65 @@
+
+<div class="container">
+
+
+    <!--<div class="row" *ngIf="showTable" style="margin:40px 20px 5px 20px;">
+        <div class="col-sm-12">
+            <p-button label="Add new product" (onClick)="addOrder()"></p-button>
+        </div>
+    </div>-->
+
+    <div class="row" *ngIf="showTable" style="margin:40px 20px 5px 20px;">
+        <div class="col-md-12 col-sm-12">
+            <div class="announcements-header">
+                Order ID: {{orderId}}
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="showTable" style="margin:5px 20px 60px 20px;">
+        <div class="col-md-12 col-sm-12">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                <p-table #dt [columns]="cols" [value]="orderDetails" [tableStyle]="{ 'min-width': '50rem' }" [sortField]="sortField" [sortOrder]="sortOrder">
+                    <ng-template pTemplate="caption">
+                        <div class="flex">
+                            <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                            <span class="p-input-icon-left ml-auto">
+                                <i class="pi pi-search"></i>
+                                <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                            </span>
+                        </div>
+                    </ng-template>
+
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                                {{ col.header }}
+                                <p-sortIcon [field]="col.field"></p-sortIcon>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                        <tr>
+                            <td *ngFor="let col of columns" [ngSwitch]="col.field">
+                                <span *ngSwitchCase="'price_per_unit'">{{ rowData[col.field] | currency:'USD'}}</span>
+                                <span *ngSwitchCase="'total_price'">{{ rowData[col.field] | currency:'USD'}}</span>
+                                <span *ngSwitchDefault >{{ rowData[col.field] }} </span>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+                    </div>
+                </div>
+                <div class="row" >
+                    <div class="col-sm-9"></div>
+                    <div class="col-sm-3" style="padding-left: 65px;">
+                        Total: ${{totalCost}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

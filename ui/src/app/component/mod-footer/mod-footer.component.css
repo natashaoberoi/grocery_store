@@ -1,0 +1,39 @@
+.footer {
+    padding-top: 20px;
+    border-top: solid 1px #e2e2e2;
+    color:rgb(75, 81, 88);
+    font-size: 0.9em;
+    padding-left: 20px;
+    margin-top: 5px;  
+    background-color: #ede7f6;
+    padding-bottom: 10px;
+}
+
+.footer a {
+    color: rgb(75, 81, 88);
+}
+
+.table-img{
+    position:relative;
+    top:10%;  
+    
+}
+
+.footer .block-header {
+    padding-bottom: 8px;
+}
+
+.footer .block-body {
+    padding-left: 20px;
+}
+
+.socialmedia-block-inner ul {
+    padding-left: 5px;
+    list-style-type: none;
+}
+
+.socialmedia-link {
+    height: 22px;
+    margin-bottom: 5px;
+   
+}
