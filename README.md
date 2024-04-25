@@ -1,35 +1,35 @@
-# grocery_store
-End to End Grocery Store Application
-*Instructions: Click on the raw button in the upper right hand corner of this box.  Copy and paste the template into the README.md document on your github.  Fill in the titles, information and links where prompted! Feel free to stray a bit to suit your project but try to stick to the format as closely as possible for consistency across DSWG projects.*
-
 # Grocery Store Management 
+End to End Grocery Store Application
 
 #### -- Project Status: [Completed]
 
-## Project Intro/Objective
-The purpose of this project is ________. (Describe the main goals of the project and potential civic impact. Limit to a short paragraph, 3-6 Sentences)
+## Project Description
+This project is an end-to-end grocery store management system. It uses a three tier system to create an app to store and manage products and orders for a grocery store system.
+1) frontend: The UI uses Angular with HTML, CSS, TypeScript, and Bootstrap.
+2) backend: Python and Flask Rest API
+3) database: MySql
 
-
-### Technologies
+## Technologies
 * Python
 * Flask
 * MySql
+* Angular
 * HTML
 * TypeScript
 * CSS
 * Bootstrap
 
-## Project Description
-(Provide more detailed overview of the project.  Talk a bit about your data sources and what questions and hypothesis you are exploring. What specific data analysis/visualization and modelling work are you using to solve the problem? What blockers and challenges are you facing?  Feel free to number or bullet point things here)
-
+This project was bootstrapped with Angular CLI version 11.2.0 and node version v12.4.0.
 
 ## Setup
 - download or clone the repository
 - make sure you have MySql installed and running
 - run `python3 server.py` in the backend folder directory
 - Navigate to the ui folder directory
-- 
-- run `npm install`
-- run 
-
+- Install npm packages and run:
+  ```
+  npm install
+  npm start
+  ```
+- After Angular finishes compliling the app, you can browse to `http://localhost:4200`.
 
