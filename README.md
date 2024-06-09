@@ -1,4 +1,4 @@
-# Grocery Store Management 
+# Grocery Store Management Application
 End to End Grocery Store Application
 
 #### -- Project Status: [Completed]
