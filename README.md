@@ -22,7 +22,7 @@ This project is an end-to-end grocery store management system. It uses a three t
 This project was bootstrapped with Angular CLI version 11.2.0 and node version v12.4.0.
 
 ## Setup
-- download or clone the repository
+- Clone the repository
 - make sure you have MySql installed and running
 - run `python3 server.py` in the backend folder directory
 - Navigate to the ui folder directory
